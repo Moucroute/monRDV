@@ -4,16 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
+
 
 @Entity
 @Table(name = "patient")
 public class Patient {
 	
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -23,17 +32,27 @@ public class Patient {
 	private Boolean defaut;
 	private String nom;
 	private String prenom;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_naissance")
 	private Date dateNaissance;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_creation")
 	private Date dateCreation;
 	
+	@ManyToOne
+	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur;
+	
+	@OneToMany
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
 
 	public Patient() {
 		super();
 	}
-
+	
 	public Patient(Long id, int version, Boolean defaut, String nom, String prenom, Date dateNaissance,
 			Date dateCreation, Utilisateur utilisateur, List<RendezVous> rendezVous) {
 		super();
@@ -47,7 +66,6 @@ public class Patient {
 		this.utilisateur = utilisateur;
 		this.rendezVous = rendezVous;
 	}
-
 	public Long getId() {
 		return id;
 	}
@@ -100,7 +118,7 @@ public class Patient {
 		this.utilisateur = utilisateur;
 	}
 
-	public List<RendezVous> getListRendezVous() {
+	public List<RendezVous> getrendezVous() {
 		return rendezVous;
 	}
 	public void setListRendezVous(List<RendezVous> rendezVous) {

@@ -3,35 +3,64 @@ package monRDV.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
+@Entity
+@DiscriminatorValue("praticien")
 public class Praticien {
 
 	@Id
 	@GeneratedValue
 	private long id;
+	@Version
 	private Integer version;
+	@Column(name = "nom", length = 100)
 	private String nom;
+	@Column(name = "prenom", length = 100)
 	private String prenom;
-	private boolean prendCarteVitale;
-	private boolean validationAuto;
-	private List<Specialite> specialite = new ArrayList<>();
+	@Column(name = "Prend_Carte_Vitale")
+	private Boolean prendCarteVitale;
+	@Column(name = "Validation_Auto")
+	private Boolean validationAuto;
+
+	@ManyToMany
+	@JoinTable(name = "praticien_specialite", joinColumns = @JoinColumn(name = "praticien_id"), inverseJoinColumns = @JoinColumn(name = "specialite_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"praticien_id", "specialite_id" }))
+	private List<Specialite> specialites = new ArrayList<>();
+
+	@OneToMany
+	@JoinTable(name = "praticien_lieu", joinColumns = @JoinColumn(name = "praticien_id"), inverseJoinColumns = @JoinColumn(name = "lieu_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"praticien_id", "lieu_id" }))
 	private List<Lieu> lieux = new ArrayList<>();
+	@OneToMany(mappedBy = "praticien")
 	private List<Modalite> modalites = new ArrayList<>();
-	private List<CreneauDisponible> creneauDisponibles = new ArrayList<>();
+	@OneToMany(mappedBy = "praticien")
+	private List<CreneauDisponible> creneaux = new ArrayList<>();
+
+	@OneToOne(mappedBy = "praticien")
 	private Utilisateur utilisateur;
 
 	public Praticien() {
 		super();
 	}
 
-	public List<Specialite> getSpecialite() {
-		return specialite;
+	public List<Specialite> getSpecialites() {
+		return specialites;
 	}
 
-	public void setSpecialite(List<Specialite> specialite) {
-		this.specialite = specialite;
+	public void setSpecialites(List<Specialite> specialites) {
+		this.specialites = specialites;
 	}
 
 	public List<Lieu> getLieux() {
@@ -50,12 +79,12 @@ public class Praticien {
 		this.modalites = modalites;
 	}
 
-	public List<CreneauDisponible> getCreneauDisponibles() {
-		return creneauDisponibles;
+	public List<CreneauDisponible> getCreneaux() {
+		return creneaux;
 	}
 
-	public void setCreneauDisponibles(List<CreneauDisponible> creneauDisponibles) {
-		this.creneauDisponibles = creneauDisponibles;
+	public void setCreneauDisponibles(List<CreneauDisponible> creneaux) {
+		this.creneaux = creneaux;
 	}
 
 	public Utilisateur getUtilisateur() {
@@ -102,7 +131,7 @@ public class Praticien {
 		return prendCarteVitale;
 	}
 
-	public void setPrendCarteVitale(boolean prendCarteVitale) {
+	public void setPrendCarteVitale(Boolean prendCarteVitale) {
 		this.prendCarteVitale = prendCarteVitale;
 	}
 
@@ -110,7 +139,7 @@ public class Praticien {
 		return validationAuto;
 	}
 
-	public void setValidationAuto(boolean validationAuto) {
+	public void setValidationAuto(Boolean validationAuto) {
 		this.validationAuto = validationAuto;
 	}
 
