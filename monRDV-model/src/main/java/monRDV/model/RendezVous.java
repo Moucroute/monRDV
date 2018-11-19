@@ -44,31 +44,17 @@ public class RendezVous {
 		super();
 	}
 
-	public RendezVous(Utilisateur utilisateur, Patient patient, Modalite modalite, List<CreneauDisponible> creneaux) {
-		super();
-
-		this.utilisateur = utilisateur;
-		this.patient = patient;
-		this.modalite = modalite;
-		this.creneaux = creneaux;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public int getVersion() {
 		return version;
 	}
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
-
+	
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}

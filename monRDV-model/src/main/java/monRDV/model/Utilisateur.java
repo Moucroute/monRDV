@@ -28,14 +28,15 @@ public class Utilisateur {
 	
 	@Version
 	private int version;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "telephone")
 	private String telephone;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_creation")
 	private Date dateCreation;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name = "mot_de_passe")
 	private String motDePasse;
 	
@@ -57,35 +58,16 @@ public class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String email, String telephone, Date dateCreation, String motDePasse,
-			Profil profil, List<Patient> patients, List<RendezVous> rendezVous, Praticien praticien) {
-		super();
-
-		this.email = email;
-		this.telephone = telephone;
-		this.dateCreation = dateCreation;
-		this.motDePasse = motDePasse;
-		this.profil = profil;
-		this.patients = patients;
-		this.rendezVous = rendezVous;
-		this.praticien = praticien;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public int getVersion() {
 		return version;
 	}
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
 
 	public String getEmail() {
 		return email;

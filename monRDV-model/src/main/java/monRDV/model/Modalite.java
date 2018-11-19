@@ -76,22 +76,7 @@ public class Modalite {
 		this.motif = motif;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-
+	
 	public Float getPrix() {
 		return prix;
 	}
@@ -122,6 +107,14 @@ public class Modalite {
 
 	public void setDepassementHonoraires(Boolean depassementHonoraires) {
 		this.depassementHonoraires = depassementHonoraires;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public Integer getVersion() {
+		return version;
 	}
 
 }

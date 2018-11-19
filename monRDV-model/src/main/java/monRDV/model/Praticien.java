@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,11 +12,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 @Entity
-@DiscriminatorValue("praticien")
+@Table(name = "praticien")
 public class Praticien {
 
 	@Id
@@ -53,19 +53,6 @@ public class Praticien {
 		super();
 	}
 	
-	public Praticien(String nom, String prenom, Boolean prendCarteVitale, Boolean validationAuto,
-			List<Specialite> specialites, List<Lieu> lieux, List<Modalite> modalites, List<CreneauDisponible> creneaux,
-			Utilisateur utilisateur) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.prendCarteVitale = prendCarteVitale;
-		this.validationAuto = validationAuto;
-		this.specialites = specialites;
-		this.lieux = lieux;
-		this.modalites = modalites;
-		this.creneaux = creneaux;
-		this.utilisateur = utilisateur;
-	}
 
 	public List<Specialite> getSpecialites() {
 		return specialites;
@@ -111,18 +98,11 @@ public class Praticien {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public Integer getVersion() {
 		return version;
 	}
 
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-
+	
 	public String getNom() {
 		return nom;
 	}
