@@ -6,13 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import formation.Application;
-import formation.model.CreneauDisponible;
-import formation.model.CreneauDisponibleId;
-import monRDV.dao.IDaoRendezVous;
-import monRDV.dao.RendezVous;
+import monRDV.Application;
+import monRDV.dao.IDaoCreneauDisponible;
+import monRDV.model.CreneauDisponible;
 
-public class DaoCreneauDisponibleJpa implements IDaoRendezVous {
+public class DaoCreneauDisponibleJpa implements IDaoCreneauDisponible {
 
 	@Override
 	public List<CreneauDisponible> findAll() {
@@ -45,7 +43,7 @@ public class DaoCreneauDisponibleJpa implements IDaoRendezVous {
 	}
 
 	@Override
-	public CreneauDisponible find(CreneauDisponibleId id) {
+	public CreneauDisponible find(Long id) {
 		CreneauDisponible CreneauDisponible = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;

@@ -6,10 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import formation.model.RendezVous;
 import monRDV.Application;
 import monRDV.dao.IDaoRendezVous;
-import monRDV.dao.RendezVous;
+import monRDV.model.RendezVous;
 
 public class DaoRendezVousJpa implements IDaoRendezVous{
 
