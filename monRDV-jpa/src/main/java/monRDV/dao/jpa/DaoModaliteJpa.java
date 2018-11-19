@@ -6,8 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import monRDV.Application;
 import monRDV.dao.IDaoModalite;
-import monRDV.dao.Modalite;
+import monRDV.model.Modalite;
 
 
 public class DaoModaliteJpa implements IDaoModalite {

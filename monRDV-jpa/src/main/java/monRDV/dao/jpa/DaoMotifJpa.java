@@ -6,7 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import monRDV.Application;
 import monRDV.dao.IDaoMotif;
+import monRDV.model.Motif;
 
 public class DaoMotifJpa implements IDaoMotif {
 
