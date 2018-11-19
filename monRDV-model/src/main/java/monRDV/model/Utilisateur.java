@@ -45,7 +45,7 @@ public class Utilisateur {
 	@OneToMany
 	private List<Patient> patients = new ArrayList<Patient>();
 	
-	@OneToMany)
+	@OneToMany
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
 	@OneToOne
