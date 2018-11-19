@@ -4,14 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+@Entity
+@DiscriminatorValue("praticien")
 public class Praticien {
 
 	@Id
@@ -27,19 +33,22 @@ public class Praticien {
 	private Boolean prendCarteVitale;
 	@Column(name = "Validation_Auto")
 	private Boolean validationAuto;
-	
-	
+
 	@ManyToMany
-	@JoinTable(name = "praticien_specialite", joinColumns = @JoinColumn(name = "praticien_id"), inverseJoinColumns = @JoinColumn(name = "specialite_nom"), uniqueConstraints = @UniqueConstraint(columnNames = {
-			"praticien_id", "specialite_nom" }))	
+	@JoinTable(name = "praticien_specialite", joinColumns = @JoinColumn(name = "praticien_id"), inverseJoinColumns = @JoinColumn(name = "specialite_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"praticien_id", "specialite_id" }))
 	private List<Specialite> specialites = new ArrayList<>();
 
+	@OneToMany
+	@JoinTable(name = "praticien_lieu", joinColumns = @JoinColumn(name = "praticien_id"), inverseJoinColumns = @JoinColumn(name = "lieu_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"praticien_id", "lieu_id" }))
 	private List<Lieu> lieux = new ArrayList<>();
-
+	@OneToMany(mappedBy = "praticien")
 	private List<Modalite> modalites = new ArrayList<>();
+	@OneToMany(mappedBy = "praticien")
+	private List<CreneauDisponible> creneaux = new ArrayList<>();
 
-	private List<CreneauDisponible> creneaux= new ArrayList<>();
-
+	@OneToOne(mappedBy = "praticien")
 	private Utilisateur utilisateur;
 
 	public Praticien() {
