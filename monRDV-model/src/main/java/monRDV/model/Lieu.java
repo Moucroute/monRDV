@@ -3,6 +3,7 @@ package monRDV.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,9 +18,12 @@ public class Lieu {
 	private Long id;
 	private int version;
 	private String nom;
-	
+	@Embedded
+	private Adresse adresse;
+	private Praticien praticien;
+
 	@OneToMany(mappedBy = "lieu")
-	private List<CreneauDisponible> creneauxDisponibles = new ArrayList<CreneauDisponible>();
+	private List<CreneauDisponible> creneaux = new ArrayList<CreneauDisponible>();
 
 	public Lieu() {
 		super();
@@ -50,11 +54,11 @@ public class Lieu {
 	}
 
 	public List<CreneauDisponible> getCreneauxDisponibles() {
-		return creneauxDisponibles;
+		return creneaux;
 	}
 
 	public void setCreneauxDisponibles(List<CreneauDisponible> creneauxDisponibles) {
-		this.creneauxDisponibles = creneauxDisponibles;
+		this.creneaux = creneauxDisponibles;
 	}
 
 }
