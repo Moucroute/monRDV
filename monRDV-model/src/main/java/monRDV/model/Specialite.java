@@ -29,10 +29,22 @@ public class Specialite {
 		super();
 	}
 	
+<<<<<<< Updated upstream
 	public Specialite(String libelle) {
 			this.libelle = libelle;
 	}
 
+=======
+	
+
+	public Specialite(String libelle, List<Praticien> praticiens, List<Motif> motifs) {
+		this.libelle = libelle;
+		this.praticiens = praticiens;
+		this.motifs = motifs;
+	}
+
+
+>>>>>>> Stashed changes
 
 	public List<Praticien> getPraticiens() {
 		return praticiens;

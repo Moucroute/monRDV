@@ -53,6 +53,22 @@ public class Praticien {
 		super();
 	}
 	
+<<<<<<< Updated upstream
+=======
+	public Praticien(String nom, String prenom, Boolean prendCarteVitale, Boolean validationAuto,
+			List<Specialite> specialites, List<Lieu> lieux, List<Modalite> modalites, List<CreneauDisponible> creneaux,
+			Utilisateur utilisateur) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.prendCarteVitale = prendCarteVitale;
+		this.validationAuto = validationAuto;
+		this.specialites = specialites;
+		this.lieux = lieux;
+		this.modalites = modalites;
+		this.creneaux = creneaux;
+		this.utilisateur = utilisateur;
+	}
+>>>>>>> Stashed changes
 
 	public List<Specialite> getSpecialites() {
 		return specialites;
@@ -141,5 +157,7 @@ public class Praticien {
 	public void setValidationAuto(Boolean validationAuto) {
 		this.validationAuto = validationAuto;
 	}
+	
+	
 
 }
