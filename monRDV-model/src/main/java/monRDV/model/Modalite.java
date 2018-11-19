@@ -35,6 +35,7 @@ public class Modalite {
 	@Column(name = "depassement_honoraires", length = 100)
 	private Boolean depassementHonoraires;
 
+	
 	private Praticien praticien;
 <<<<<<< Updated upstream
 
