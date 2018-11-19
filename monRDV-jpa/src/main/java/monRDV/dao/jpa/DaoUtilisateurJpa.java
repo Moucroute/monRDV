@@ -7,14 +7,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import monRDV.Application;
-import monRDV.dao.IDaoModalite;
-import monRDV.model.Modalite;
+import monRDV.dao.IDaoUtilisateur;
+import monRDV.model.Utilisateur;
 
+public class DaoUtilisateurJpa implements IDaoUtilisateur {
 
-public class DaoModaliteJpa implements IDaoModalite {
-	@Override
-	public List<Modalite> findAll() {
-		List<Modalite> list = null;
+	public List<Utilisateur> findAll() {
+		List<Utilisateur> list = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -23,10 +22,10 @@ public class DaoModaliteJpa implements IDaoModalite {
 			tx = em.getTransaction();
 			tx.begin();
 
-			Query query = em.createQuery("select m from Modalite m");
-			
+			Query query = em.createQuery("select s from Salle s");
+
 			list = query.getResultList();
-			
+
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,9 +41,8 @@ public class DaoModaliteJpa implements IDaoModalite {
 		return list;
 	}
 
-	@Override
-	public Modalite find(Long id) {
-		Modalite modalite = null;
+	public Utilisateur find(Long id) {
+		Utilisateur utilisateur = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -53,7 +51,7 @@ public class DaoModaliteJpa implements IDaoModalite {
 			tx = em.getTransaction();
 			tx.begin();
 
-			modalite = em.find(Modalite.class, id);
+			utilisateur = em.find(Utilisateur.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -67,11 +65,10 @@ public class DaoModaliteJpa implements IDaoModalite {
 			}
 		}
 
-		return modalite;
+		return utilisateur;
 	}
 
-	@Override
-	public Modalite save(Modalite obj) {
+	public Utilisateur save(Utilisateur obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -79,9 +76,9 @@ public class DaoModaliteJpa implements IDaoModalite {
 			em = Application.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
-			
+
 			obj = em.merge(obj);
-			
+
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,12 +90,11 @@ public class DaoModaliteJpa implements IDaoModalite {
 				em.close();
 			}
 		}
-		
+
 		return obj;
 	}
 
-	@Override
-	public void delete(Modalite obj) {
+	public void delete(Utilisateur obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -106,7 +102,7 @@ public class DaoModaliteJpa implements IDaoModalite {
 			em = Application.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
-			
+
 			em.remove(em.merge(obj));
 
 			tx.commit();
@@ -121,6 +117,5 @@ public class DaoModaliteJpa implements IDaoModalite {
 			}
 		}
 	}
-}
 
-	
+}
