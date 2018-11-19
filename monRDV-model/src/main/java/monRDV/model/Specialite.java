@@ -1,36 +1,43 @@
 package monRDV.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Specialite {
-
+	@Id
+	@GeneratedValue
 	private Long id;
 	@Version
 	private int version;
+	@Column(name = "libelle", length = 100)
 	private String libelle;
-	private List<Praticien> praticien = new ArrayList<>();
-	private List<Motif> motif = new ArrayList<>();
+	@ManyToMany(mappedBy = "specialites")
+	private List<Praticien> praticiens = new ArrayList<>();
+	private List<Motif> motifs = new ArrayList<>();
 
 	public Specialite() {
 		super();
 	}
 
-	public List<Praticien> getPraticien() {
-		return praticien;
+	public List<Praticien> getPraticiens() {
+		return praticiens;
 	}
 
-	public void setPraticien(List<Praticien> praticien) {
-		this.praticien = praticien;
+	public void setPraticiens(List<Praticien> praticiens) {
+		this.praticiens = praticiens;
 	}
 
-	public List<Motif> getMotif() {
-		return motif;
+	public List<Motif> getMotifs() {
+		return motifs;
 	}
 
-	public void setMotif(List<Motif> motif) {
-		this.motif = motif;
+	public void setMotifs(List<Motif> motifs) {
+		this.motifs = motifs;
 	}
 
 	public Long getId() {
