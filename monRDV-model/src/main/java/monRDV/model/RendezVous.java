@@ -3,24 +3,40 @@ package monRDV.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Version;
 
+
+@Entity
+@Table(name = "rendezvous")
 public class RendezVous {
 	
+	@Id
+	@GeneratedValue
 	private Long id;
+	
+	@Version
 	private int version;
 	
+	@ManyToOne
 	private Utilisateur utilisateur;
 	
 	@ManyToOne
 	@JoinTable(name = "patient_rendezvous")
 	private Patient patient;
+	
+	@ManyToOne
 	private Modalite modalite;
 	
+	@OneToMany(mappedBy = "rendezVous")
 	private List<CreneauDisponible> creneaux = new ArrayList<CreneauDisponible>();
-	
 	
 
 	public RendezVous() {
