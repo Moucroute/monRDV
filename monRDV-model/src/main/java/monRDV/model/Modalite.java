@@ -35,11 +35,16 @@ public class Modalite {
 	@Column(name = "depassement_honoraires", length = 100)
 	private Boolean depassementHonoraires;
 
+	
 	private Praticien praticien;
+<<<<<<< Updated upstream
 
 	private List<RendezVous> rendezVous = new ArrayList<>();
 
 	@OneToMany(mappedBy = "modalites")
+=======
+	private List<RendezVous> rendezVous = new ArrayList<>();
+>>>>>>> Stashed changes
 	private Motif motif;
 
 	public Modalite() {

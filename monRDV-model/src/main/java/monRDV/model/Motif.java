@@ -3,16 +3,28 @@ package monRDV.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
+
 public class Motif {
 	
+	@Id
+	@GeneratedValue
+	@Column(name = "id", length = 100)
 	private Long id;
-	
+
+	@Version
 	private Integer version;
 	
+	@Column(name = "libelle", length = 100)
 	private String libelle;
 	
 	private Specialite specialite;
 	
+	@ManyToOne
 	private List<Modalite> modalites = new ArrayList<>();
 	
 	
