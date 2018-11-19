@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
@@ -24,30 +25,16 @@ public class Motif {
 	private String libelle;
 
 	@ManyToOne
+	@JoinColumn(name = "specialite_id")
 	private Specialite specialite;
 
-	@OneToMany
+	@OneToMany(mappedBy = "motif")
 	private List<Modalite> modalites = new ArrayList<>();
 
 	public Motif() {
 		super();
 	}
 
-	public Motif(Long id, Integer version, String libelle) {
-		super();
-		this.id = id;
-		this.version = version;
-		this.libelle = libelle;
-	}
-
-	public Motif(Long id, Integer version, String libelle, Specialite specialite, List<Modalite> modalites) {
-		super();
-		this.id = id;
-		this.version = version;
-		this.libelle = libelle;
-		this.specialite = specialite;
-		this.modalites = modalites;
-	}
 
 	public Specialite getSpecialite() {
 		return specialite;

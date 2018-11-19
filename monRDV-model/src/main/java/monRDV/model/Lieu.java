@@ -35,14 +35,12 @@ public class Lieu {
 		super();
 	}
 	
-	
-
-	public Lieu(String nom, List<CreneauDisponible> creneauxDisponibles) {
+	public Lieu(String nom, Adresse adresse, Praticien praticien, List<CreneauDisponible> creneaux) {
 		this.nom = nom;
-		this.creneauxDisponibles = creneauxDisponibles;
+		this.adresse = adresse;
+		this.praticien = praticien;
+		this.creneaux = creneaux;
 	}
-
-
 
 	public Long getId() {
 		return id;

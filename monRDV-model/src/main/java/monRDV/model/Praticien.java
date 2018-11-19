@@ -53,8 +53,6 @@ public class Praticien {
 		super();
 	}
 	
-<<<<<<< Updated upstream
-=======
 	public Praticien(String nom, String prenom, Boolean prendCarteVitale, Boolean validationAuto,
 			List<Specialite> specialites, List<Lieu> lieux, List<Modalite> modalites, List<CreneauDisponible> creneaux,
 			Utilisateur utilisateur) {
@@ -68,7 +66,6 @@ public class Praticien {
 		this.creneaux = creneaux;
 		this.utilisateur = utilisateur;
 	}
->>>>>>> Stashed changes
 
 	public List<Specialite> getSpecialites() {
 		return specialites;

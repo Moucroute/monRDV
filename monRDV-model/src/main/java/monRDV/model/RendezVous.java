@@ -13,6 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+
+
 
 @Entity
 @Table(name = "rendezvous")
@@ -27,24 +32,23 @@ public class RendezVous {
 	
 	@ManyToOne
 	private Utilisateur utilisateur;
-	
+
 	@ManyToOne
 	@JoinTable(name = "patient_rendezvous")
 	private Patient patient;
 	
 	@ManyToOne
+	@JoinColumn(name = "modalite_id")
 	private Modalite modalite;
 	
 	@OneToMany(mappedBy = "rendezVous")
 	private List<CreneauDisponible> creneaux = new ArrayList<CreneauDisponible>();
-	
 
 	public RendezVous() {
 		super();
 	}
 
-	public RendezVous(Utilisateur utilisateur, Patient patient, Modalite modalite,
-			List<CreneauDisponible> creneaux) {
+	public RendezVous(Utilisateur utilisateur, Patient patient, Modalite modalite, List<CreneauDisponible> creneaux) {
 		super();
 
 		this.utilisateur = utilisateur;
@@ -100,12 +104,5 @@ public class RendezVous {
 	public void setRendezVous(List<CreneauDisponible> creneaux) {
 		this.creneaux = creneaux;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
