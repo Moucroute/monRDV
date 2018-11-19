@@ -24,6 +24,15 @@ public class Lieu {
 	public Lieu() {
 		super();
 	}
+	
+	
+
+	public Lieu(String nom, List<CreneauDisponible> creneauxDisponibles) {
+		this.nom = nom;
+		this.creneauxDisponibles = creneauxDisponibles;
+	}
+
+
 
 	public Long getId() {
 		return id;
