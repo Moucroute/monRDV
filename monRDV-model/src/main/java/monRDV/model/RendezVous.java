@@ -12,7 +12,7 @@ public class RendezVous {
 	private Patient patient;
 	private Modalite modalite;
 	
-	private List<CreneauDisponible> rendezVous = new ArrayList<CreneauDisponible>();
+	private List<CreneauDisponible> creneaux = new ArrayList<CreneauDisponible>();
 	
 	
 
@@ -21,14 +21,14 @@ public class RendezVous {
 	}
 
 	public RendezVous(Long id, int version, Utilisateur utilisateur, Patient patient, Modalite modalite,
-			List<CreneauDisponible> rendezVous) {
+			List<CreneauDisponible> creneaux) {
 		super();
 		this.id = id;
 		this.version = version;
 		this.utilisateur = utilisateur;
 		this.patient = patient;
 		this.modalite = modalite;
-		this.rendezVous = rendezVous;
+		this.creneaux = creneaux;
 	}
 
 	public Long getId() {
@@ -71,12 +71,12 @@ public class RendezVous {
 		this.modalite = modalite;
 	}
 
-	public List<CreneauDisponible> getRendezVous() {
-		return rendezVous;
+	public List<CreneauDisponible> getcreneaux() {
+		return creneaux;
 	}
 
-	public void setRendezVous(List<CreneauDisponible> rendezVous) {
-		this.rendezVous = rendezVous;
+	public void setRendezVous(List<CreneauDisponible> creneaux) {
+		this.creneaux = creneaux;
 	}
 	
 	
