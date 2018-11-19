@@ -45,8 +45,7 @@ public class Utilisateur {
 	@OneToMany
 	private List<Patient> patients = new ArrayList<Patient>();
 	
-	@OneToMany
-	@Column(name = "rendez_vous")
+	@OneToMany)
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
 	@OneToOne
@@ -58,11 +57,10 @@ public class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(Long id, int version, String email, String telephone, Date dateCreation, String motDePasse,
+	public Utilisateur(String email, String telephone, Date dateCreation, String motDePasse,
 			Profil profil, List<Patient> patients, List<RendezVous> rendezVous, Praticien praticien) {
 		super();
-		this.id = id;
-		this.version = version;
+
 		this.email = email;
 		this.telephone = telephone;
 		this.dateCreation = dateCreation;
