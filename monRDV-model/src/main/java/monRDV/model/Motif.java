@@ -7,10 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
 public class Motif {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id", length = 100)
@@ -18,20 +19,20 @@ public class Motif {
 
 	@Version
 	private Integer version;
-	
+
 	@Column(name = "libelle", length = 100)
 	private String libelle;
-	
-	private Specialite specialite;
-	
+
 	@ManyToOne
+	private Specialite specialite;
+
+	@OneToMany
 	private List<Modalite> modalites = new ArrayList<>();
-	
-	
+
 	public Motif() {
 		super();
 	}
-	
+
 	public Motif(Long id, Integer version, String libelle) {
 		super();
 		this.id = id;
@@ -67,27 +68,25 @@ public class Motif {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public Integer getVersion() {
 		return version;
 	}
-	
+
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	
+
 	public String getLibelle() {
 		return libelle;
 	}
-	
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	
-	
 
 }
