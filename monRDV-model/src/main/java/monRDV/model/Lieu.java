@@ -7,8 +7,11 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "lieu")
@@ -20,6 +23,9 @@ public class Lieu {
 	private String nom;
 	@Embedded
 	private Adresse adresse;
+	@OneToMany
+    @JoinTable(name = "lieu_praticien", joinColumns = @JoinColumn(name = "lieu_id"), inverseJoinColumns = @JoinColumn(name = "praticien_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+            "lieu_id", "praticien_id" }))
 	private Praticien praticien;
 
 	@OneToMany(mappedBy = "lieu")
