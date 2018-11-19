@@ -52,6 +52,7 @@ public class Praticien {
 	public Praticien() {
 		super();
 	}
+	
 
 	public List<Specialite> getSpecialites() {
 		return specialites;
