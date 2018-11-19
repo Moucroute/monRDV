@@ -21,6 +21,8 @@ public class CreneauDisponible {
 	@ManyToOne
 	@JoinColumn(name = "lieu_id")
 	private Lieu lieu;
+	private Praticien praticien;
+	private RendezVous rendezVous;
 
 	public CreneauDisponible() {
 		super();
@@ -65,5 +67,23 @@ public class CreneauDisponible {
 	public void setLieu(Lieu lieu) {
 		this.lieu = lieu;
 	}
+
+	public Praticien getPraticien() {
+		return praticien;
+	}
+
+	public void setPraticien(Praticien praticien) {
+		this.praticien = praticien;
+	}
+
+	public RendezVous getRendezVous() {
+		return rendezVous;
+	}
+
+	public void setRendezVous(RendezVous rendezVous) {
+		this.rendezVous = rendezVous;
+	}
+	
+	
 
 }
