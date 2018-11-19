@@ -26,7 +26,7 @@ public class Patient {
 	private Date dateNaissance;
 	private Date dateCreation;
 	
-	private List<Utilisateur> listUtilisateurs = new ArrayList<Utilisateur>();
+	private Utilisateur utilisateur;
 	private List<RendezVous> listRendezVous = new ArrayList<RendezVous>();
 	
 
@@ -89,12 +89,16 @@ public class Patient {
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	public List<Utilisateur> getListUtilisateurs() {
-		return listUtilisateurs;
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
-	public void setListUtilisateurs(List<Utilisateur> listUtilisateurs) {
-		this.listUtilisateurs = listUtilisateurs;
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
+
 	public List<RendezVous> getListRendezVous() {
 		return listRendezVous;
 	}
