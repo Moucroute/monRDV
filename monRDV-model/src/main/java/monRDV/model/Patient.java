@@ -27,7 +27,7 @@ public class Patient {
 	private Date dateCreation;
 	
 	private Utilisateur utilisateur;
-	private List<RendezVous> listRendezVous = new ArrayList<RendezVous>();
+	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
 
 	public Patient() {
@@ -35,7 +35,7 @@ public class Patient {
 	}
 
 	public Patient(Long id, int version, Boolean defaut, String nom, String prenom, Date dateNaissance,
-			Date dateCreation, Utilisateur utilisateur, List<RendezVous> listRendezVous) {
+			Date dateCreation, Utilisateur utilisateur, List<RendezVous> rendezVous) {
 		super();
 		this.id = id;
 		this.version = version;
@@ -45,7 +45,7 @@ public class Patient {
 		this.dateNaissance = dateNaissance;
 		this.dateCreation = dateCreation;
 		this.utilisateur = utilisateur;
-		this.listRendezVous = listRendezVous;
+		this.rendezVous = rendezVous;
 	}
 
 	public Long getId() {
@@ -101,10 +101,10 @@ public class Patient {
 	}
 
 	public List<RendezVous> getListRendezVous() {
-		return listRendezVous;
+		return rendezVous;
 	}
-	public void setListRendezVous(List<RendezVous> listRendezVous) {
-		this.listRendezVous = listRendezVous;
+	public void setListRendezVous(List<RendezVous> rendezVous) {
+		this.rendezVous = rendezVous;
 	}
 	
 	
