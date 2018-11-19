@@ -3,12 +3,19 @@ package monRDV.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+
 public class RendezVous {
 	
 	private Long id;
 	private int version;
 	
 	private Utilisateur utilisateur;
+	
+	@ManyToOne
+	@JoinTable(name = "patient_rendezvous")
 	private Patient patient;
 	private Modalite modalite;
 	
@@ -20,11 +27,10 @@ public class RendezVous {
 		super();
 	}
 
-	public RendezVous(Long id, int version, Utilisateur utilisateur, Patient patient, Modalite modalite,
+	public RendezVous(Utilisateur utilisateur, Patient patient, Modalite modalite,
 			List<CreneauDisponible> creneaux) {
 		super();
-		this.id = id;
-		this.version = version;
+
 		this.utilisateur = utilisateur;
 		this.patient = patient;
 		this.modalite = modalite;
