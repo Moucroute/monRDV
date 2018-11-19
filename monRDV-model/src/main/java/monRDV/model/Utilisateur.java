@@ -4,19 +4,53 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
+@Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
 	
+	@Id
+	@GeneratedValue
 	private Long id;
+	
+	@Version
 	private int version;
 	private String email;
 	private String telephone;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_creation")
 	private Date dateCreation;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "mot_de_passe")
 	private String motDePasse;
+	
+	@Enumerated(EnumType.STRING)
 	private Profil profil;
 	
+	@OneToMany
 	private List<Patient> patients = new ArrayList<Patient>();
+	
+	@OneToMany
+	@Column(name = "rendez_vous")
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
+	@OneToOne
+	@JoinColumn(name="praticien_id")
 	private Praticien praticien;
 	
 
