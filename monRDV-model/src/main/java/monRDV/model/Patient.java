@@ -42,6 +42,7 @@ public class Patient {
 		this.utilisateur = utilisateur;
 		this.rendezVous = rendezVous;
 	}
+	
 	private Boolean defaut;
 	private String nom;
 	private String prenom;
@@ -66,17 +67,6 @@ public class Patient {
 		super();
 	}
 	
-	public Patient(Boolean defaut, String nom, String prenom, Date dateNaissance,
-			Date dateCreation, Utilisateur utilisateur, List<RendezVous> rendezVous) {
-		super();
-		this.defaut = defaut;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.dateCreation = dateCreation;
-		this.utilisateur = utilisateur;
-		this.rendezVous = rendezVous;
-	}
 	public Long getId() {
 		return id;
 	}
