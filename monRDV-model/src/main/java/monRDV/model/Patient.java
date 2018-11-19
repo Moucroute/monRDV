@@ -55,11 +55,9 @@ public class Patient {
 		super();
 	}
 	
-	public Patient(Long id, int version, Boolean defaut, String nom, String prenom, Date dateNaissance,
+	public Patient(Boolean defaut, String nom, String prenom, Date dateNaissance,
 			Date dateCreation, Utilisateur utilisateur, List<RendezVous> rendezVous) {
 		super();
-		this.id = id;
-		this.version = version;
 		this.defaut = defaut;
 		this.nom = nom;
 		this.prenom = prenom;
