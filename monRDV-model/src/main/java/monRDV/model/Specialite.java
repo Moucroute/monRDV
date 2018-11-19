@@ -1,6 +1,8 @@
 package monRDV.model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -8,6 +10,8 @@ import javax.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@DiscriminatorValue("specialite")
 public class Specialite {
 	@Id
 	@GeneratedValue
@@ -18,6 +22,7 @@ public class Specialite {
 	private String libelle;
 	@ManyToMany(mappedBy = "specialites")
 	private List<Praticien> praticiens = new ArrayList<>();
+
 	private List<Motif> motifs = new ArrayList<>();
 
 	public Specialite() {
