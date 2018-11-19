@@ -39,9 +39,7 @@ public class Praticien {
 			"praticien_id", "specialite_id" }))
 	private List<Specialite> specialites = new ArrayList<>();
 
-	@OneToMany
-	@JoinTable(name = "praticien_lieu", joinColumns = @JoinColumn(name = "praticien_id"), inverseJoinColumns = @JoinColumn(name = "lieu_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
-			"praticien_id", "lieu_id" }))
+	@OneToMany(mappedBy = "praticien")
 	private List<Lieu> lieux = new ArrayList<>();
 	@OneToMany(mappedBy = "praticien")
 	private List<Modalite> modalites = new ArrayList<>();
@@ -54,6 +52,7 @@ public class Praticien {
 	public Praticien() {
 		super();
 	}
+	
 
 	public List<Specialite> getSpecialites() {
 		return specialites;
