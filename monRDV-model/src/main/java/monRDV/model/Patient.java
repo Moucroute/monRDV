@@ -1,5 +1,6 @@
 package monRDV.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,8 @@ public class Patient {
 	private Date dateNaissance;
 	private Date dateCreation;
 	
-	List<Utilisateur> listUtilisateurs = new List<Utilisateur>();
-	List<RendezVous> listRendezVous = new List<RendezVous>();
+	private List<Utilisateur> listUtilisateurs = new ArrayList<Utilisateur>();
+	private List<RendezVous> listRendezVous = new ArrayList<RendezVous>();
 	
 
 	public Patient() {
