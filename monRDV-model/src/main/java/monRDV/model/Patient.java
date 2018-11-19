@@ -33,7 +33,7 @@ public class Patient {
 	public Patient() {
 		super();
 	}
-
+	
 	public Patient(Long id, int version, Boolean defaut, String nom, String prenom, Date dateNaissance,
 			Date dateCreation, Utilisateur utilisateur, List<RendezVous> rendezVous) {
 		super();
@@ -47,7 +47,6 @@ public class Patient {
 		this.utilisateur = utilisateur;
 		this.rendezVous = rendezVous;
 	}
-
 	public Long getId() {
 		return id;
 	}
@@ -100,7 +99,7 @@ public class Patient {
 		this.utilisateur = utilisateur;
 	}
 
-	public List<RendezVous> getListRendezVous() {
+	public List<RendezVous> getrendezVous() {
 		return rendezVous;
 	}
 	public void setListRendezVous(List<RendezVous> rendezVous) {
