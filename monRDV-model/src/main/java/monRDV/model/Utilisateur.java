@@ -14,8 +14,8 @@ public class Utilisateur {
 	private String motDePasse;
 	private Profil profil;
 	
-	private List<Patient> listPatient = new ArrayList<Patient>();
-	private List<RendezVous> listRendezVous = new ArrayList<RendezVous>();
+	private List<Patient> patients = new ArrayList<Patient>();
+	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
 	private Praticien praticien;
 	
@@ -25,7 +25,7 @@ public class Utilisateur {
 	}
 
 	public Utilisateur(Long id, int version, String email, String telephone, Date dateCreation, String motDePasse,
-			Profil profil, List<Patient> listPatient, List<RendezVous> listRendezVous, Praticien praticien) {
+			Profil profil, List<Patient> patients, List<RendezVous> rendezVous, Praticien praticien) {
 		super();
 		this.id = id;
 		this.version = version;
@@ -34,8 +34,8 @@ public class Utilisateur {
 		this.dateCreation = dateCreation;
 		this.motDePasse = motDePasse;
 		this.profil = profil;
-		this.listPatient = listPatient;
-		this.listRendezVous = listRendezVous;
+		this.patients = patients;
+		this.rendezVous = rendezVous;
 		this.praticien = praticien;
 	}
 
@@ -96,19 +96,19 @@ public class Utilisateur {
 	}
 
 	public List<Patient> getListPatient() {
-		return listPatient;
+		return patients;
 	}
 
-	public void setListPatient(List<Patient> listPatient) {
-		this.listPatient = listPatient;
+	public void setListPatient(List<Patient> patients) {
+		this.patients = patients;
 	}
 
-	public List<RendezVous> getListRendezVous() {
-		return listRendezVous;
+	public List<RendezVous> getrendezVous() {
+		return rendezVous;
 	}
 
-	public void setListRendezVous(List<RendezVous> listRendezVous) {
-		this.listRendezVous = listRendezVous;
+	public void setListRendezVous(List<RendezVous> rendezVous) {
+		this.rendezVous = rendezVous;
 	}
 
 	public Praticien getPraticien() {
