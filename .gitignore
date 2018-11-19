@@ -1,0 +1,16 @@
+
+monRDV-model/\.settings/
+
+monRDV-model/target/
+
+monRDV-model/\.classpath
+
+monRDV-model/\.project
+
+monRDV-jpa/\.settings/
+
+monRDV-jpa/target/
+
+monRDV-jpa/\.classpath
+
+monRDV-jpa/\.project
