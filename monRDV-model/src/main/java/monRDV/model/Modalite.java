@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -37,41 +38,18 @@ public class Modalite {
 	private Boolean depassementHonoraires;
 
 	@ManyToOne
+	@JoinColumn(name="praticien_id")
 	private Praticien praticien;
 
-	@OneToMany
+	@OneToMany(mappedBy="modalite")
 	private List<RendezVous> rendezVous = new ArrayList<>();
 
-	@OneToMany(mappedBy = "modalites")
+	@ManyToOne
+	@JoinColumn(name = "motif_id")
 	private Motif motif;
 
 	public Modalite() {
 		super();
-	}
-
-	public Modalite(Long id, Integer version, Float prix, Long duree, Long delaiAnnulation,
-			Boolean depassementHonoraires) {
-		super();
-		this.id = id;
-		this.version = version;
-		this.prix = prix;
-		this.duree = duree;
-		this.delaiAnnulation = delaiAnnulation;
-		this.depassementHonoraires = depassementHonoraires;
-	}
-
-	public Modalite(Long id, Integer version, Float prix, Long duree, Long delaiAnnulation,
-			Boolean depassementHonoraires, Praticien praticien, List<RendezVous> rendezVous, Motif motif) {
-		super();
-		this.id = id;
-		this.version = version;
-		this.prix = prix;
-		this.duree = duree;
-		this.delaiAnnulation = delaiAnnulation;
-		this.depassementHonoraires = depassementHonoraires;
-		this.praticien = praticien;
-		this.rendezVous = rendezVous;
-		this.motif = motif;
 	}
 
 	public List<RendezVous> getRendezVous() {
