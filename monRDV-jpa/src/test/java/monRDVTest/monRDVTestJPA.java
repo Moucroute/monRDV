@@ -4,13 +4,13 @@ public class monRDVTestJPA {
 
 	public static void main(String[] args) {
 
-<<<<<<< HEAD
-		//testPraticien
+
+//		testPraticien
 				
-=======
+
 //		arthur
 		
->>>>>>> master
+
 	}
 
 }
