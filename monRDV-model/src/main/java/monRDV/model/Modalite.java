@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -35,8 +36,10 @@ public class Modalite {
 	@Column(name = "depassement_honoraires", length = 100)
 	private Boolean depassementHonoraires;
 
+	@ManyToOne
 	private Praticien praticien;
 
+	@OneToMany
 	private List<RendezVous> rendezVous = new ArrayList<>();
 
 	@OneToMany(mappedBy = "modalites")
