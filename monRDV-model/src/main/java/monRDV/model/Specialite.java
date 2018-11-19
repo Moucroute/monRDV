@@ -28,6 +28,11 @@ public class Specialite {
 	public Specialite() {
 		super();
 	}
+	
+	public Specialite(String libelle) {
+			this.libelle = libelle;
+	}
+
 
 	public List<Praticien> getPraticiens() {
 		return praticiens;
