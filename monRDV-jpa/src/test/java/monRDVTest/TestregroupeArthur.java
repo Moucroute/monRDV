@@ -45,9 +45,9 @@ public class TestregroupeArthur {
 //		 debut specialite -------------------------------------------------------------------------
 
 		IDaoSpecialite daoSpecialite = new DaoSpecialiteJpa();
-		List<Specialite> specialites1 = new ArrayList();
-		List<Specialite> specialites2 = new ArrayList();
-		List<Specialite> specialites3 = new ArrayList();
+		List<Specialite> specialites1 = new ArrayList<>();
+		List<Specialite> specialites2 = new ArrayList<>();
+		List<Specialite> specialites3 = new ArrayList<>();
 		
 //		List<Specialite> specialites1 = daoSpecialite.findAll();
 //		System.out.println("Nombre au début=" + specialites1.size());
@@ -61,9 +61,9 @@ public class TestregroupeArthur {
 		Specialite specialite3 = new Specialite();
 		specialite3.setLibelle("urologie");
 		
-		
 		Specialite specialite4 = new Specialite();
 		specialite4.setLibelle("cardiologie");
+		
 		Specialite specialite5 = new Specialite();
 		specialite5.setLibelle("orthopédie");
 		
@@ -230,8 +230,8 @@ public class TestregroupeArthur {
 //		Lieu ----------------------------------------------------------------------------------------------
 		IDaoLieu daoLieu = new DaoLieuJpa();
 		List<Lieu> lieux1 = new ArrayList<>();
-		List<Lieu> lieux2 = new ArrayList();
-		List<Lieu> lieux3 = new ArrayList();
+		List<Lieu> lieux2 = new ArrayList<>();
+		List<Lieu> lieux3 = new ArrayList<>();
 		
 		Lieu lieu1 = new Lieu();
 		lieu1.setNom("Cabinet Caramel");
@@ -242,6 +242,9 @@ public class TestregroupeArthur {
 		Lieu lieu3 = new Lieu();
 		lieu3.setNom("Cabinet Cacao");
 		lieu3.setAdresse(adresse3);
+		
+		lieux1.add(lieu1);
+		lieux1.add(lieu2);
 		
 		lieu1 =daoLieu.save(lieu1);
 		lieu2 =daoLieu.save(lieu2);
@@ -281,38 +284,46 @@ public class TestregroupeArthur {
 		
 //		Praticien -----------------------------------------------------------------------------------------------
 		IDaoPraticien daoPraticien = new DaoPraticienJpa();
-		List<Praticien> praticiens1 = new ArrayList();
-		List<Praticien> praticiens2 = new ArrayList();
-		List<Praticien> praticiens3 = new ArrayList();
+		List<Praticien> praticiens1 = new ArrayList<>();
+		List<Praticien> praticiens2 = new ArrayList<>();
+		List<Praticien> praticiens3 = new ArrayList<>();
 
 		Praticien praticien1 = new Praticien();
 		praticien1.setNom("House");
 		praticien1.setPrenom("Gregory");
 		praticien1.setPrendCarteVitale(true);
 		praticien1.setValidationAuto(true);
-		praticien1.setSpecialites(specialites1);
-		praticien1.setLieux(lieux1);
+		praticien1.getSpecialites().add(specialite4);
+		praticien1.getSpecialites().add(specialite5);
+		praticien1.getSpecialites().add(specialite3);
+		praticien1.getLieux().add(lieu3);
+//		praticien1.setLieux(lieux1);
 		praticien1.setModalites(modalites1);
 		praticien1.setCreneauDisponibles(creneauxdisponibles1);
 		
 		Praticien praticien2 = new Praticien();
-		praticien1.setNom("Tapie");
-		praticien1.setPrenom("Bernard");
-		praticien1.setPrendCarteVitale(true);
-		praticien1.setValidationAuto(true);
-		praticien1.setSpecialites(specialites2);
-		praticien1.setLieux(lieux2);
-//		praticien1.setModalites(modalites1);
-//		praticien1.setCreneauDisponibles(creneauxdisponibles1);
+		praticien2.setNom("Tapie");
+		praticien2.setPrenom("Bernard");
+		praticien2.setPrendCarteVitale(true);
+		praticien2.setValidationAuto(true);
+//		praticien2.setSpecialites(specialites1);  //  /!\ le setSpecialite ne fonctionne pas
+		
+		
+//		praticien2.setLieux(lieux2);
+//		praticien2.setModalites(modalites1);
+//		praticien2.setCreneauDisponibles(creneauxdisponibles1);
 		Praticien praticien3 = new Praticien();
-		praticien1.setNom("Masse");
-		praticien1.setPrenom("Gregoire");
-		praticien1.setPrendCarteVitale(true);
-		praticien1.setValidationAuto(true);
-		praticien1.setSpecialites(specialites3);
-		praticien1.setLieux(lieux3);
-//		praticien1.setModalites(modalites1);
-//		praticien1.setCreneauDisponibles(creneauxdisponibles1);
+		praticien3.setNom("Masse");
+		praticien3.setPrenom("Gregoire");
+		praticien3.setPrendCarteVitale(true);
+		praticien3.setValidationAuto(true);
+//		praticien3.setSpecialites(specialites3);
+//		praticien3.setLieux(lieux3);
+//		praticien3.setModalites(modalites1);
+//		praticien3.setCreneauDisponibles(creneauxdisponibles1);
+		
+		praticiens1.add(praticien1);
+		
 		
 		praticien1 =daoPraticien.save(praticien1);
 		praticien2 =daoPraticien.save(praticien2);
@@ -324,6 +335,8 @@ public class TestregroupeArthur {
 //		creneaudisponible2.setPraticien(praticien1);
 //		creneaudisponible2.setPraticien(praticien2);
 		
+		lieu3.setPraticien(praticien1);
+		
 		modalite1.setPraticien(praticien1);
 		modalite1.setRendezVous(rendezvouss1);
 		
@@ -334,6 +347,7 @@ public class TestregroupeArthur {
 		patient3.setUtilisateur(utilisateur1);
 		patient3.setListRendezVous(rendezvouss1);
 		
+	
 //		Saves finale ------------------------------------------------------------------------------------
 		creneaudisponible1 = daoCreneauDisponible.save(creneaudisponible1);
 		creneaudisponible2 = daoCreneauDisponible.save(creneaudisponible2);
@@ -352,12 +366,17 @@ public class TestregroupeArthur {
 		patient3 = daoPatient.save(patient3);
 		
 		modalite1 =daoModalite.save(modalite1);
+//		specialite1.getPraticiens().add(praticien2);
+		
+		praticien2=daoPraticien.save(praticien2);
+		
 		
 		specialite1 = daoSpecialite.save(specialite1);
 		specialite2 = daoSpecialite.save(specialite2);
 		specialite3 = daoSpecialite.save(specialite3);
 		specialite4 = daoSpecialite.save(specialite4);
 		specialite5 = daoSpecialite.save(specialite5);
+		
 		
 	}
 
