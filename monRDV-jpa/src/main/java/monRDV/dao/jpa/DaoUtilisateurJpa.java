@@ -22,7 +22,7 @@ public class DaoUtilisateurJpa implements IDaoUtilisateur {
 			tx = em.getTransaction();
 			tx.begin();
 
-			Query query = em.createQuery("select s from Salle s");
+			Query query = em.createQuery("select u from Utilisateur u");
 
 			list = query.getResultList();
 

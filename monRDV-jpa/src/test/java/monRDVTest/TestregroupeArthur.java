@@ -1,5 +1,6 @@
 package monRDVTest;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,49 +34,48 @@ import monRDV.model.Utilisateur;
 
 public class TestregroupeArthur {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
-		// debut specialite
+//		 debut specialite -------------------------------------------------------------------------
 
 		IDaoSpecialite daoSpecialite = new DaoSpecialiteJpa();
 		List<Specialite> specialites1 = daoSpecialite.findAll();
 		System.out.println("Nombre au début=" + specialites1.size());
 
-		Specialite specialite1 = new Specialite("proctologie");
-		specialite1.setId(1234L);
-		specialite1.setVersion(1);
+		Specialite specialite1 = new Specialite();
+		specialite1.setLibelle("proctologie");
 
-		Specialite specialite2 = new Specialite("gynecologie");
-		specialite2.setId(1256L);
-		specialite2.setVersion(1);
+		Specialite specialite2 = new Specialite();
+		specialite2.setLibelle("gynecologie");
 
-		Specialite specialite3 = new Specialite("urologie");
-		specialite3.setId(1269L);
-		specialite3.setVersion(1);
+		Specialite specialite3 = new Specialite();
+		specialite3.setLibelle("urologie");
+		
 		
 		Specialite specialite4 = new Specialite();
 		specialite4.setLibelle("cardiologie");
-		Specialite specialite5 = new Specialite("orthopédie");
+		Specialite specialite5 = new Specialite();
 		specialite5.setLibelle("orthopédie");
 		
 
-//		specialite1 = daoSpecialite.save(spe1);
-//		specialite2 = daoSpecialite.save(spe2);
-//		specialite3 = daoSpecialite.save(spe3);
+		specialite1 = daoSpecialite.save(specialite1);
+		specialite2 = daoSpecialite.save(specialite2);
+		specialite3 = daoSpecialite.save(specialite3);
+		specialite4 = daoSpecialite.save(specialite4);
+		specialite5 = daoSpecialite.save(specialite5);
 
-//		Specialite specialite1Find = daoSpecialite.find(specialite1.getId());
-//		System.out.println(specialite1.getId() + "=" + specialite1Find.getId());
+		Specialite specialite1Find = daoSpecialite.find(specialite1.getId());
+		System.out.println(specialite1.getId() + "=" + specialite1Find.getId());
 
-//		specialites1 = daoSpecialite.findAll();
+		specialites1 = daoSpecialite.findAll();
 
 		System.out.println("Nombre avant la suppression=" + specialites1.size());
 
 //		daoSpecialite.delete(spe2);
-
-		// fin specialite
 		
+//		Debut motif -------------------------------------------------------------------------------------------
 		IDaoMotif daoMotif=new DaoMotifJpa();
 		List<Motif> motifs1=new ArrayList<>();
 		
@@ -84,45 +84,32 @@ public class TestregroupeArthur {
 		motif1.setSpecialite(specialite1);
 		
 		motifs1.add(motif1);
-
+//		début utilisateur ------------------------------------------------------------------------------
+		
 		IDaoUtilisateur daoUtilisateur = new DaoUtilisateurJpa();
 
 		List<Utilisateur> utilisateurs = daoUtilisateur.findAll();
 
 		System.out.println("Nombre au début=" + utilisateurs.size());
+		
+
 
 		Utilisateur utilisateur1 = new Utilisateur(); // new
 
 		utilisateur1.setEmail("utilisateur1@gmail.com");
 		utilisateur1.setTelephone("0669696969");
-		utilisateur1.setDateCreation(sdf.parse("25/12/2000"));
+		utilisateur1.setDateCreation(new Date());
 		utilisateur1.setMotDePasse("liugfhlkjs<fhKsuil<");
 		utilisateur1.setProfil(Profil.Patient);
 
-//		utilisateur1 = daoUtilisateur.save(utilisateur1); // managed
+		utilisateur1 = daoUtilisateur.save(utilisateur1); // managed
 
 		Utilisateur utilisateur1Find = daoUtilisateur.find(utilisateur1.getId());
 
-		System.out.println(utilisateur1.getId() + "=" + utilisateur1Find.getId());
-		System.out.println(utilisateur1.getEmail() + "=" + utilisateur1Find.getEmail());
-		System.out.println(utilisateur1.getTelephone() + "=" + utilisateur1Find.getTelephone());
-		System.out.println(utilisateur1.getDateCreation() + "=" + utilisateur1Find.getDateCreation());
-		System.out.println(utilisateur1.getMotDePasse() + "=" + utilisateur1Find.getMotDePasse());
-		System.out.println(utilisateur1.getProfil() + "=" + utilisateur1Find.getProfil());
-
-//		utilisateur1 = daoUtilisateur.save(utilisateur1); // managed
-
-//		utilisateur1Find = daoUtilisateur.find(utilisateur1.getId());
-
-		System.out.println(utilisateur1.getId() + "=" + utilisateur1Find.getId());
-		System.out.println(utilisateur1.getEmail() + "=" + utilisateur1Find.getEmail());
-		System.out.println(utilisateur1.getTelephone() + "=" + utilisateur1Find.getTelephone());
-		System.out.println(utilisateur1.getDateCreation() + "=" + utilisateur1Find.getDateCreation());
-		System.out.println(utilisateur1.getMotDePasse() + "=" + utilisateur1Find.getMotDePasse());
-		System.out.println(utilisateur1.getProfil() + "=" + utilisateur1Find.getProfil());
-
-//		utilisateurs = daoUtilisateur.findAll();
-
+		utilisateur1 = daoUtilisateur.save(utilisateur1); // managed
+		utilisateur1Find = daoUtilisateur.find(utilisateur1.getId());
+		utilisateurs = daoUtilisateur.findAll();
+//		Patient ---------------------------------------------------------------------------------------
 		IDaoPatient daoPatient = new DaoPatientJpa();
 		List<Patient> patients = daoPatient.findAll();
 
@@ -132,8 +119,8 @@ public class TestregroupeArthur {
 		patient1.setPrenom("Charlotte");
 		patient1.setDateNaissance(sdf.parse("05/10/1990"));
 		patient1.setDateCreation(new Date());
-//		patient1.setUtilisateur(utilisateur);
-//		patient1.setListRendezVous(rendezVous);
+//		patient1.setUtilisateur(utilisateur); fait plus loin
+//		patient1.setListRendezVous(rendezVous); fait plus loin
 		
 		Patient patient2 = new Patient();
 		patient2.setDefaut(true);
@@ -141,8 +128,8 @@ public class TestregroupeArthur {
 		patient2.setPrenom("Arthur");
 		patient2.setDateNaissance(sdf.parse("30/12/1993"));
 		patient2.setDateCreation(new Date());
-//		patient2.setUtilisateur(utilisateur);
-//		patient2.setListRendezVous(rendezVous);
+//		patient2.setUtilisateur(utilisateur); fait plus loin
+//		patient2.setListRendezVous(rendezVous); fait plus loin
 		
 		Patient patient3 = new Patient();
 		patient3.setDefaut(true);
@@ -150,8 +137,8 @@ public class TestregroupeArthur {
 		patient3.setPrenom("Jory");
 		patient3.setDateNaissance(sdf.parse("21/10/1992"));
 		patient3.setDateCreation(new Date());
-//		patient3.setUtilisateur(utilisateur);
-//		patient3.setListRendezVous(rendezVous);
+//		patient3.setUtilisateur(utilisateur); fait plus loin
+//		patient3.setListRendezVous(rendezVous); fait plus loin
 		
 		patients.add(patient3);
 		patients.add(patient2);
@@ -270,12 +257,38 @@ public class TestregroupeArthur {
 		praticien1.setModalites(modalites1);
 		praticien1.setCreneauDisponibles(creneauxdisponibles1);
 		
-		Praticien praticien2 = new Praticien("Tapie", "Bernard", true, true, specialites2, lieux2, modalites2, creneaudisponible2);
-		Praticien praticien3 = new Praticien("Masse", "Gregoire", true, true, specialites3, lieux3, modalites3, null);
+		Praticien praticien2 = new Praticien();
+		praticien1.setNom("Tapie");
+		praticien1.setPrenom("Bernard");
+		praticien1.setPrendCarteVitale(true);
+		praticien1.setValidationAuto(true);
+		praticien1.setSpecialites(specialites2);
+		praticien1.setLieux(lieux2);
+		praticien1.setModalites(modalites1);
+		praticien1.setCreneauDisponibles(creneauxdisponibles1);
+		Praticien praticien3 = new Praticien();
+		praticien1.setNom("Masse");
+		praticien1.setPrenom("Gregoire");
+		praticien1.setPrendCarteVitale(true);
+		praticien1.setValidationAuto(true);
+		praticien1.setSpecialites(specialites3);
+		praticien1.setLieux(lieux3);
+		praticien1.setModalites(modalites1);
+		praticien1.setCreneauDisponibles(creneauxdisponibles1);
+		
+		
 		creneaudisponible1.setPraticien(praticien1);
 		creneaudisponible2.setPraticien(praticien1);
 		creneaudisponible2.setPraticien(praticien2);
+		
 		modalite1.setPraticien(praticien1);
+		
+		patient1.setUtilisateur(utilisateur1);
+		patient1.setListRendezVous(rendezvouss1);
+		patient2.setUtilisateur(utilisateur1);
+		patient2.setListRendezVous(rendezvouss1);
+		patient3.setUtilisateur(utilisateur1);
+		patient3.setListRendezVous(rendezvouss1);
 		
 		
 	}
