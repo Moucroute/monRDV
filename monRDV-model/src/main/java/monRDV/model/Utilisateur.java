@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -43,10 +44,10 @@ public class Utilisateur {
 	@Enumerated(EnumType.STRING)
 	private Profil profil;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "utilisateur")
 	private List<Patient> patients = new ArrayList<Patient>();
 	
-	@OneToMany
+	@OneToMany(mappedBy = "utilisateur")
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
 	@OneToOne
