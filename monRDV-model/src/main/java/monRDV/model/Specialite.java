@@ -24,7 +24,7 @@ public class Specialite {
 	@ManyToMany(mappedBy = "specialites")
 	private List<Praticien> praticiens = new ArrayList<>();
 
-	@OneToMany(mappedBy = "specialites")
+	@OneToMany(mappedBy = "specialite")
 	private List<Motif> motifs = new ArrayList<>();
 
 	public Specialite() {
