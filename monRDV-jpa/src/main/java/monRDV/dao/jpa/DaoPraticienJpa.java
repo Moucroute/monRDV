@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import monRDV.Application;
 import monRDV.dao.IDaoPraticien;
 import monRDV.model.Praticien;
@@ -126,8 +128,35 @@ public class DaoPraticienJpa implements IDaoPraticien {
 
 	@Override
 	public List<Praticien> findByNomLieuSpecialite(String nom, String lieu, String libelle) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Praticien> list = null;
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			TypedQuery<Praticien> query = em.createQuery("select p from Praticien p where p.nom = :param1 join fetch p.lieux where p.lieux.nom = :param2 join fetch p.specialites where p.specialites.libelle = :param3", Praticien.class);
+			query.setParameter("param1", nom);
+			query.setParameter("param2", lieu);
+			query.setParameter("param3", libelle);
+			list = query.getResultList();
+
+			
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return list;
 	}
 
 	
