@@ -30,7 +30,7 @@ public class Specialite {
 	public Specialite() {
 		super();
 	}
-	
+
 	public List<Praticien> getPraticiens() {
 		return praticiens;
 	}
@@ -51,11 +51,17 @@ public class Specialite {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public int getVersion() {
 		return version;
 	}
-	
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public String getLibelle() {
 		return libelle;

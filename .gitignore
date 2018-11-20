@@ -15,3 +15,5 @@ monRDV-jpa/\.classpath
 
 monRDV-jpa/\.project
 /.metadata/
+
+monRDV-model/src/main/java/monRDV/model/Specialite\.java
