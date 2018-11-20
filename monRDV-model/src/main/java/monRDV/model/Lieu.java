@@ -27,11 +27,8 @@ public class Lieu {
 	@Embedded
 	private Adresse adresse;
 	@ManyToOne
-    @JoinTable(name = "lieu_praticien", 
-    joinColumns = @JoinColumn(name = "lieu_id"),
-    inverseJoinColumns = @JoinColumn(name = "praticien_id"),
-    uniqueConstraints = @UniqueConstraint(columnNames = {
-            "lieu_id", "praticien_id" }))
+	@JoinTable(name = "lieu_praticien", joinColumns = @JoinColumn(name = "lieu_id"), inverseJoinColumns = @JoinColumn(name = "praticien_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"lieu_id", "praticien_id" }))
 	private Praticien praticien;
 
 	@OneToMany(mappedBy = "lieu")
@@ -40,47 +37,46 @@ public class Lieu {
 	public Lieu() {
 		super();
 	}
-	
 
-	
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getVersion() {
 		return version;
 	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public Adresse getAdresse() {
 		return adresse;
 	}
 
-
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
 
 	public Praticien getPraticien() {
 		return praticien;
 	}
 
-
 	public void setPraticien(Praticien praticien) {
 		this.praticien = praticien;
 	}
-
 
 	public List<CreneauDisponible> getCreneaux() {
 		return creneaux;
 	}
 
-
 	public void setCreneaux(List<CreneauDisponible> creneaux) {
 		this.creneaux = creneaux;
 	}
-
 
 	public String getNom() {
 		return nom;
