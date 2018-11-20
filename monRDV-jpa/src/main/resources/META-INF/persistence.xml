@@ -5,8 +5,17 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="monRDV"
 		transaction-type="RESOURCE_LOCAL">
-		<class>??????</class>
-
+		<class>monRDV.model.Adresse</class>
+		<class>monRDV.model.CreneauDisponible</class>
+		<class>monRDV.model.Lieu</class>
+		<class>monRDV.model.Modalite</class>
+		<class>monRDV.model.Motif</class>
+		<class>monRDV.model.Patient</class>
+		<class>monRDV.model.Praticien</class>
+		<class>monRDV.model.Profil</class>
+		<class>monRDV.model.RendezVous</class>
+		<class>monRDV.model.Specialite</class>
+		<class>monRDV.model.Utilisateur</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
@@ -22,6 +31,8 @@
 				value="org.hibernate.dialect.PostgreSQL94Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
+			
+			
 		</properties>
 	</persistence-unit>
 </persistence>

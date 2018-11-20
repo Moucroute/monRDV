@@ -28,8 +28,11 @@ public class Patient {
 	
 	@Version
 	private int version;
+	@Column(name = "defaut")
 	private Boolean defaut;
+	@Column(name = "nom")
 	private String nom;
+	@Column(name = "prenom")
 	private String prenom;
 	
 	@Temporal(TemporalType.DATE)
@@ -47,17 +50,6 @@ public class Patient {
 	@OneToMany(mappedBy = "patient")
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
 	
-	public Patient(Boolean defaut, String nom, String prenom, Date dateNaissance, Date dateCreation,
-			Utilisateur utilisateur, List<RendezVous> rendezVous) {
-		super();
-		this.defaut = defaut;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.dateCreation = dateCreation;
-		this.utilisateur = utilisateur;
-		this.rendezVous = rendezVous;
-	}
 	
 	public Patient() {
 		super();
@@ -66,15 +58,11 @@ public class Patient {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public int getVersion() {
 		return version;
 	}
-	public void setVersion(int version) {
-		this.version = version;
-	}
+	
 	public Boolean getDefaut() {
 		return defaut;
 	}

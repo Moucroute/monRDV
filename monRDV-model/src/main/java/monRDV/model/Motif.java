@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
+@Entity
+@Table(name = "motif")
 public class Motif {
 
 	@Id
@@ -56,18 +60,12 @@ public class Motif {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public Integer getVersion() {
 		return version;
 	}
 
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-
+	
 	public String getLibelle() {
 		return libelle;
 	}
