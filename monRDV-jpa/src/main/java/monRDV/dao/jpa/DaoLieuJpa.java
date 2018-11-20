@@ -127,8 +127,33 @@ public class DaoLieuJpa implements IDaoLieu {
 
 	@Override
 	public List<Lieu> findByNom(String nom) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Lieu> list = null;
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			Query query = em.createQuery("select l from Lieu l where l.nom = :param1");
+			query.setParameter("param1", nom);
+			
+			list = query.getResultList();
+			
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return list;
 	}
 
 

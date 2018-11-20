@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import monRDV.Application;
 import monRDV.dao.IDaoUtilisateur;
+import monRDV.model.Lieu;
 import monRDV.model.Utilisateur;
 
 public class DaoUtilisateurJpa implements IDaoUtilisateur {
@@ -117,5 +118,38 @@ public class DaoUtilisateurJpa implements IDaoUtilisateur {
 			}
 		}
 	}
+
+	@Override
+	public List<Utilisateur> findByEmail(String email) {
+		List<Utilisateur> list = null;
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			Query query = em.createQuery("select u from Utilisateur u where u.email = :param1");
+			query.setParameter("param1", email);
+			
+			list = query.getResultList();
+			
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return list;
+	}
+
+
 
 }
