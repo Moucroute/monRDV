@@ -25,7 +25,7 @@ public class DaoSpecialiteJpa implements IDaoSpecialite {
 				tx = em.getTransaction();
 				tx.begin();
 
-				Query query = em.createQuery("select s from Specilaite s");
+				Query query = em.createQuery("select s from Specialite s");
 				
 				list = query.getResultList();
 				

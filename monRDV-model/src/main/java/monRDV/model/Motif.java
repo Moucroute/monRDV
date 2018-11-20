@@ -40,6 +40,14 @@ public class Motif {
 	}
 
 
+	public Motif(Long id, Integer version, String libelle) {
+		super();
+		this.id = id;
+		this.version = version;
+		this.libelle = libelle;
+	}
+
+
 	public Specialite getSpecialite() {
 		return specialite;
 	}
