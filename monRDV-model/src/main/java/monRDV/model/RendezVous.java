@@ -13,19 +13,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-
-
 @Entity
 @Table(name = "rendezvous")
 public class RendezVous {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Version
 	private int version;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
@@ -33,11 +31,11 @@ public class RendezVous {
 	@ManyToOne
 	@JoinTable(name = "patient_rendezvous")
 	private Patient patient;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "modalite_id")
 	private Modalite modalite;
-	
+
 	@OneToMany(mappedBy = "rendezVous")
 	private List<CreneauDisponible> creneaux = new ArrayList<CreneauDisponible>();
 
@@ -45,17 +43,30 @@ public class RendezVous {
 		super();
 	}
 
-	
 	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public int getVersion() {
 		return version;
 	}
 
-	
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public List<CreneauDisponible> getCreneaux() {
+		return creneaux;
+	}
+
+	public void setCreneaux(List<CreneauDisponible> creneaux) {
+		this.creneaux = creneaux;
+	}
+
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
