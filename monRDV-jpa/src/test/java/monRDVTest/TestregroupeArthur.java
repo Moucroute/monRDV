@@ -7,13 +7,16 @@ import java.util.Date;
 import java.util.List;
 
 import monRDV.dao.IDaoCreneauDisponible;
+import monRDV.dao.IDaoLieu;
 import monRDV.dao.IDaoModalite;
 import monRDV.dao.IDaoMotif;
 import monRDV.dao.IDaoPatient;
+import monRDV.dao.IDaoPraticien;
 import monRDV.dao.IDaoRendezVous;
 import monRDV.dao.IDaoSpecialite;
 import monRDV.dao.IDaoUtilisateur;
 import monRDV.dao.jpa.DaoCreneauDisponibleJpa;
+import monRDV.dao.jpa.DaoLieuJpa;
 import monRDV.dao.jpa.DaoModaliteJpa;
 import monRDV.dao.jpa.DaoMotifJpa;
 import monRDV.dao.jpa.DaoPatientJpa;
@@ -143,7 +146,12 @@ public class TestregroupeArthur {
 		patients.add(patient3);
 		patients.add(patient2);
 		patients.add(patient1);
+		
+		patient1 = daoPatient.save(patient1);
+		patient2 = daoPatient.save(patient2);
+		patient3 = daoPatient.save(patient3);
 
+//		Modalite ------------------------------------------------------------------------------------------
 		IDaoModalite daoModalite = new DaoModaliteJpa();
 		List<Modalite> modalites1 = new ArrayList<Modalite>();
 
@@ -157,6 +165,7 @@ public class TestregroupeArthur {
 		
 		modalites1.add(modalite1);
 
+//		RendezVous ---------------------------------------------------------------------------------------------
 		IDaoRendezVous daoRendezVous = new DaoRendezVousJpa();
 		List<RendezVous> rendezvouss1 = new ArrayList<RendezVous>();
 		
@@ -176,11 +185,17 @@ public class TestregroupeArthur {
 		rendezvous3.setPatient(patient3);
 		rendezvous3.setModalite(modalite1);
 		rendezvous3.setRendezVous(null);
+		 
+		rendezvous1 = daoRendezVous.save(rendezvous1);
+		rendezvous2 = daoRendezVous.save(rendezvous2);
+		rendezvous3 = daoRendezVous.save(rendezvous3);
+		
 
 		modalite1.setRendezVous(rendezvouss1);
 
-		// Creation objets adresse
+//		 Creation objets adresse -------------------------------------------------------------------------------------
 
+		List<Adresse> adresses1 = new ArrayList<>();
 		Adresse adresse1 = new Adresse();
 		Adresse adresse2 = new Adresse();
 		Adresse adresse3 = new Adresse();
@@ -204,20 +219,25 @@ public class TestregroupeArthur {
 		List<Specialite> specialites2 = new ArrayList();
 		List<Specialite> specialites3 = new ArrayList();
 		
-		List<Praticien> praticiens1 = new ArrayList();
-		List<Praticien> praticiens2 = new ArrayList();
-		List<Praticien> praticiens3 = new ArrayList();
 		
-		List<Lieu> lieux1 = new ArrayList();
+		
+		
+		
+//		Lieu ----------------------------------------------------------------------------------------------
+		IDaoLieu daoLieu = new DaoLieuJpa();
+		List<Lieu> lieux1 = new ArrayList<>();
 		List<Lieu> lieux2 = new ArrayList();
 		List<Lieu> lieux3 = new ArrayList();
 		
 		Lieu lieu1 = new Lieu();
 		lieu1.setNom("Cabinet Caramel");
+		lieu1.setAdresse(adresse1);
 		Lieu lieu2 = new Lieu();
+		lieu2.setAdresse(adresse2);
 		lieu2.setNom("Hopital Nougat");
 		Lieu lieu3 = new Lieu();
 		lieu3.setNom("Cabinet Cacao");
+		lieu3.setAdresse(adresse3);
 		
 		
 		
@@ -246,6 +266,12 @@ public class TestregroupeArthur {
 		
 		IDaoCreneauDisponible daoCreneaudisponible = new DaoCreneauDisponibleJpa();
 		List<CreneauDisponible> creneauxdisponibles1 = new ArrayList<>();
+		
+//		Praticien -----------------------------------------------------------------------------------------------
+		IDaoPraticien daoPraticien = new DaoPraticienJpa();
+		List<Praticien> praticiens1 = new ArrayList();
+		List<Praticien> praticiens2 = new ArrayList();
+		List<Praticien> praticiens3 = new ArrayList();
 
 		Praticien praticien1 = new Praticien();
 		praticien1.setNom("House");

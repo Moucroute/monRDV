@@ -11,7 +11,7 @@ import monRDV.model.Praticien;
 
 
 
-public class IDaoPraticienJpa implements IDaoPraticien {
+public class DaoPraticienJpa implements IDaoPraticien {
 
 	@Override
 	public List<Praticien> findAll() {
