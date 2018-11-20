@@ -2,7 +2,6 @@ package monRDV.dao;
 
 import java.util.List;
 
-import monRDV.model.Lieu;
 import monRDV.model.Utilisateur;
 
 public interface IDaoUtilisateur extends IDao<Utilisateur, Long>{

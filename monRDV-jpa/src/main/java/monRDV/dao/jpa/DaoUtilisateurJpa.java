@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import monRDV.Application;
 import monRDV.dao.IDaoUtilisateur;
-import monRDV.model.Lieu;
 import monRDV.model.Utilisateur;
 
 public class DaoUtilisateurJpa implements IDaoUtilisateur {
