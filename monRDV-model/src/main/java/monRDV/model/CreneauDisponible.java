@@ -21,10 +21,10 @@ public class CreneauDisponible {
 	private Long id;
 	@Version
 	private int version;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_debut")
 	private Date debut;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_fin")
 	private Date fin;
 	@ManyToOne
