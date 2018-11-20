@@ -136,16 +136,18 @@ public class DaoPraticienJpa implements IDaoPraticien {
 			em = Application.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
+			
 
 			TypedQuery<Praticien> query = em.createQuery("select p from Praticien p join fetch p.lieux l where p.nom = :param1 and where l.nom = :param2", Praticien.class);
 			query.setParameter("param1", nom);
 			query.setParameter("param2", lieu);
 //			query.setParameter("param3", libelle);
 			list = query.getResultList();
+			
 			if ((nom != null)&&(lieu != null)&&(libelle != null)) {
 				query = em.createQuery("select p from praticien p left join fetch p.specialite left join fetch p.lieux where p.nom = :param1 and :param2 member of p.lieux.nom and :param3 member of p.specialites.libelle", Praticien.class);
 			
-			Query query = null;
+
 
 			}
 			
