@@ -145,7 +145,6 @@ public class DaoPraticienJpa implements IDaoPraticien {
 			if ((nom != null)&&(lieu != null)&&(libelle != null)) {
 				query = em.createQuery("select p from praticien p left join fetch p.specialite left join fetch p.lieux where p.nom = :param1 and :param2 member of p.lieux.nom and :param3 member of p.specialites.libelle", Praticien.class);
 			
-			Query query = null;
 
 			}
 			
