@@ -27,6 +27,7 @@ public class RendezVous {
 	private int version;
 	
 	@ManyToOne
+	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
 
 	@ManyToOne
