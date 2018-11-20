@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import formation.model.Entreprise;
+
 import monRDV.dao.IDaoModalite;
 import monRDV.dao.IDaoMotif;
 import monRDV.dao.IDaoPraticien;
