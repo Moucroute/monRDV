@@ -41,16 +41,21 @@ public class CreneauDisponible {
 		super();
 	}
 
-		
 	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public int getVersion() {
 		return version;
 	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public Date getDebut() {
 		return debut;
@@ -91,7 +96,5 @@ public class CreneauDisponible {
 	public void setRendezVous(RendezVous rendezVous) {
 		this.rendezVous = rendezVous;
 	}
-	
-	
 
 }

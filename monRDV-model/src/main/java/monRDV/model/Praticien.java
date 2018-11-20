@@ -94,14 +94,6 @@ public class Praticien {
 		this.utilisateur = utilisateur;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public Integer getVersion() {
-		return version;
-	}
-
 	
 	public String getNom() {
 		return nom;
@@ -133,6 +125,41 @@ public class Praticien {
 
 	public void setValidationAuto(Boolean validationAuto) {
 		this.validationAuto = validationAuto;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public Integer getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+
+	public Boolean getPrendCarteVitale() {
+		return prendCarteVitale;
+	}
+
+
+	public Boolean getValidationAuto() {
+		return validationAuto;
+	}
+
+
+	public void setCreneaux(List<CreneauDisponible> creneaux) {
+		this.creneaux = creneaux;
 	}
 	
 	

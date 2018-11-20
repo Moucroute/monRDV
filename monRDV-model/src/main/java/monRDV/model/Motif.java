@@ -39,6 +39,21 @@ public class Motif {
 		super();
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
 	public Motif(Long id, Integer version, String libelle) {
 		super();
@@ -64,16 +79,6 @@ public class Motif {
 		this.modalites = modalites;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	
-	public Integer getVersion() {
-		return version;
-	}
-
-	
 	public String getLibelle() {
 		return libelle;
 	}

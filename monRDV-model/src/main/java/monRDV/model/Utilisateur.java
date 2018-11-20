@@ -22,53 +22,73 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Version
 	private int version;
 	@Column(name = "email")
 	private String email;
 	@Column(name = "telephone")
 	private String telephone;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_creation")
 	private Date dateCreation;
-	
+
 	@Column(name = "mot_de_passe")
 	private String motDePasse;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Profil profil;
-	
+
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Patient> patients = new ArrayList<Patient>();
-	
+
 	@OneToMany(mappedBy = "utilisateur")
 	private List<RendezVous> rendezVous = new ArrayList<RendezVous>();
-	
+
 	@OneToOne
-	@JoinColumn(name="praticien_id")
+	@JoinColumn(name = "praticien_id")
 	private Praticien praticien;
-	
 
 	public Utilisateur() {
 		super();
 	}
 
-	
 	public Long getId() {
 		return id;
 	}
 
-	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public int getVersion() {
 		return version;
 	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<Patient> patients) {
+		this.patients = patients;
+	}
+
+	public List<RendezVous> getRendezVous() {
+		return rendezVous;
+	}
+
+	public void setRendezVous(List<RendezVous> rendezVous) {
+		this.rendezVous = rendezVous;
+	}
 
 	public String getEmail() {
 		return email;
@@ -133,8 +153,5 @@ public class Utilisateur {
 	public void setPraticien(Praticien praticien) {
 		this.praticien = praticien;
 	}
-	
-	
-	
-	
+
 }
