@@ -143,41 +143,11 @@ public class DaoPraticienJpa implements IDaoPraticien {
 			query.setParameter("param2", lieu);
 //			query.setParameter("param3", libelle);
 			list = query.getResultList();
+			if ((nom != null)&&(lieu != null)&&(libelle != null)) {
+				query = em.createQuery("select p from praticien p left join fetch p.specialite left join fetch p.lieux where p.nom = :param1 and :param2 member of p.lieux.nom and :param3 member of p.specialites.libelle", Praticien.class);
+
+			}
 			
-//			if ((nom != null)&&(lieu != null)&&(libelle != null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.specialite left join fetch p.lieux where p.nom = :param1 and :param2 member of p.lieux.nom and :param3 member of p.specialites.libelle", Praticien.class);
-//
-//
-//			}
-//			
-//			else if ((nom == null)&&(lieu != null)&&(libelle != null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.specialite left join fetch p.lieux where :param2 member of p.lieux and :param3 member of p.specialites", Praticien.class);	
-//			}
-//			
-//			else if ((nom == null)&&(lieu == null)&&(libelle != null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.specialite where :param3 member of p.specialites", Praticien.class);
-//			}
-//			
-//			else if ((nom != null)&&(lieu == null)&&(libelle == null)) {
-//				query = em.createQuery("select p from praticien p where p.nom = :param1",  Praticien.class);
-//			}
-//			
-//			else if ((nom == null)&&(lieu != null)&&(libelle == null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.lieux where :param2 member of p.lieux",  Praticien.class);
-//			}
-//			
-//			else if ((nom == null)&&(lieu == null)&&(libelle != null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.specialites where :param3 member of p.specialites",  Praticien.class);
-//			}
-//			
-//			else if ((nom != null)&&(lieu != null)&&(libelle == null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.lieux where p.nom = :param1 and :param2 member of p.lieux",  Praticien.class);
-//			}
-//			
-//			else if ((nom != null)&&(lieu == null)&&(libelle != null)) {
-//				query = em.createQuery("select p from praticien p left join fetch p.specialites where p.nom = :param1 and :param3 member of p.specialites",  Praticien.class);
-//
-//			}
 		
 //			if (query != null) {
 //				query.setParameter("param1", nom);
